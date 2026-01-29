@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESNA — Inteligencia artificial para empresas</title>
+    <meta name="description" content="Ayudamos a empresas a trabajar mejor con inteligencia artificial.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 400;
+            color: #1d1d1f;
+            background: #fff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 26px;
+            width: auto;
+        }
+
+        nav a {
+            font-size: 12px;
+            font-weight: 400;
+            color: #1d1d1f;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            background: #fafafa;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        /* Animated gradient background */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.08), transparent),
+                radial-gradient(ellipse 60% 50% at 80% 50%, rgba(59, 130, 246, 0.06), transparent),
+                radial-gradient(ellipse 50% 40% at 20% 60%, rgba(139, 92, 246, 0.05), transparent);
+            animation: gradientMove 15s ease-in-out infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% {
+                transform: scale(1) translateY(0);
+            }
+            50% {
+                transform: scale(1.1) translateY(-20px);
+            }
+        }
+
+        /* Floating orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(59, 130, 246, 0.1));
+            top: 5%;
+            left: -15%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.08));
+            bottom: 10%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(16, 185, 129, 0.08));
+            top: 50%;
+            left: 40%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(5deg);
+            }
+            50% {
+                transform: translate(-20px, 20px) rotate(-5deg);
+            }
+            75% {
+                transform: translate(20px, 30px) rotate(3deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-eyebrow {
+            font-size: 14px;
+            font-weight: 500;
+            color: #6e6e73;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 64px);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+            text-align: center;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #10b981, #34d399, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            font-weight: 400;
+            color: #6e6e73;
+            max-width: 500px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 17px;
+            font-weight: 400;
+            color: #2997ff;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .hero-cta:hover {
+            text-decoration: underline;
+        }
+
+        .hero-cta svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Services */
+        .services {
+            padding: 100px 24px;
+            background: #fff;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .services-header h2 {
+            font-size: 40px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .services-header p {
+            font-size: 17px;
+            color: #6e6e73;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 44px 36px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.15), 0 4px 20px rgba(59, 130, 246, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 50px rgba(16, 185, 129, 0.2), 0 8px 30px rgba(59, 130, 246, 0.15);
+        }
+
+        .service-card h3 {
+            font-size: 21px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: #6e6e73;
+            line-height: 1.5;
+        }
+
+        /* Process */
+        .process {
+            padding: 100px 24px;
+            background: linear-gradient(180deg, #f5f5f7 0%, #fff 100%);
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .process-header h2 {
+            font-size: 40px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .process-header p {
+            font-size: 17px;
+            color: #6e6e73;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            text-align: center;
+            max-width: 280px;
+        }
+
+        .step-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #2997ff 0%, #5ac8fa 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .process-step:hover .step-icon {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .process-step h3 {
+            font-size: 21px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .process-step p {
+            font-size: 14px;
+            color: #6e6e73;
+            line-height: 1.5;
+        }
+
+        /* Philosophy */
+        .philosophy {
+            padding: 120px 24px;
+            background: #f5f5f7;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .philosophy-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .philosophy h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+            max-width: 700px;
+            margin: 0 auto 24px;
+            line-height: 1.15;
+        }
+
+        .philosophy h2 span {
+            background: linear-gradient(135deg, #10b981, #34d399, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .philosophy p {
+            font-size: 17px;
+            color: #6e6e73;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 100px 24px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            padding: 100px 70px;
+            border-radius: 32px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(50px);
+        }
+
+        .contact-glow-1 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(255, 94, 0, 0.6) 0%, rgba(255, 140, 0, 0.3) 40%, transparent 70%);
+            top: -180px;
+            left: -150px;
+            animation: glow1 6s ease-in-out infinite;
+        }
+
+        .contact-glow-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 50, 100, 0.55) 0%, rgba(255, 100, 150, 0.25) 50%, transparent 70%);
+            bottom: -150px;
+            right: -120px;
+            animation: glow2 8s ease-in-out infinite;
+        }
+
+        .contact-glow-3 {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(255, 100, 150, 0.5) 0%, transparent 60%);
+            top: 15%;
+            right: 5%;
+            animation: glow3 7s ease-in-out infinite;
+        }
+
+        .contact-glow-4 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(220, 30, 30, 0.55) 0%, rgba(255, 50, 50, 0.2) 50%, transparent 60%);
+            bottom: 10%;
+            left: 0%;
+            animation: glow4 9s ease-in-out infinite;
+        }
+
+        .contact-glow-5 {
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(255, 40, 40, 0.5) 0%, transparent 60%);
+            top: 45%;
+            left: 45%;
+            animation: glow5 5s ease-in-out infinite;
+        }
+
+        .contact-glow-6 {
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(200, 20, 60, 0.5) 0%, rgba(255, 50, 80, 0.25) 40%, transparent 70%);
+            top: -120px;
+            right: -100px;
+            animation: glow6 10s ease-in-out infinite;
+        }
+
+        .contact-glow-7 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(230, 20, 20, 0.5) 0%, rgba(255, 60, 30, 0.2) 50%, transparent 65%);
+            bottom: -100px;
+            left: -80px;
+            animation: glow7 7s ease-in-out infinite;
+        }
+
+        @keyframes glow1 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+            25% { transform: translate(50px, 30px) scale(1.2); opacity: 1; }
+            50% { transform: translate(-30px, 60px) scale(0.85); opacity: 0.8; }
+            75% { transform: translate(60px, -20px) scale(1.1); opacity: 0.95; }
+        }
+
+        @keyframes glow2 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+            33% { transform: translate(-60px, -40px) scale(1.25); opacity: 1; }
+            66% { transform: translate(30px, -30px) scale(0.8); opacity: 0.7; }
+        }
+
+        @keyframes glow3 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+            50% { transform: translate(-50px, 50px) scale(1.3); opacity: 1; }
+        }
+
+        @keyframes glow4 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+            40% { transform: translate(40px, -40px) scale(1.2); opacity: 1; }
+            80% { transform: translate(-25px, 25px) scale(0.9); opacity: 0.6; }
+        }
+
+        @keyframes glow5 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            30% { transform: translate(-35px, -35px) scale(1.25); opacity: 0.9; }
+            70% { transform: translate(25px, 40px) scale(0.85); opacity: 0.7; }
+        }
+
+        @keyframes glow6 {
+            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.8; }
+            50% { transform: translate(-40px, 40px) scale(1.15) rotate(10deg); opacity: 1; }
+        }
+
+        @keyframes glow7 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.85; }
+            35% { transform: translate(45px, -30px) scale(1.2); opacity: 1; }
+            70% { transform: translate(-20px, 45px) scale(0.9); opacity: 0.75; }
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact h2 {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            margin-bottom: 40px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-link {
+            font-size: 17px;
+            font-weight: 400;
+            color: #1d1d1f;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #ff6b00;
+        }
+
+        .contact-location {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #6e6e73;
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px 24px;
+            background: #f5f5f7;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 12px;
+            color: #6e6e73;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                gap: 20px;
+                padding: 0 16px;
+            }
+
+            nav a:not(.logo) {
+                font-size: 11px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+            }
+
+            .services-header h2,
+            .process-header h2,
+            .contact h2 {
+                font-size: 32px;
+            }
+
+            .orb-1, .orb-2, .orb-3 {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo"><img src="logo.png" alt="ESNA"></a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">ESNA</p>
+            <h1>Inteligencia artificial<br><span>para tu empresa</span></h1>
+            <p>Automatizamos procesos, analizamos datos y mejoramos la toma de decisiones. Simple y efectivo.</p>
+            <a href="#contacto" class="hero-cta">Empezar <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="services-header">
+            <h2>Qué hacemos</h2>
+            <p>Soluciones que transforman tu forma de trabajar</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Automatización de procesos</h3>
+                <p>Eliminamos operaciones manuales. Tu equipo libre para lo que realmente aporta valor.</p>
+            </div>
+            <div class="service-card">
+                <h3>Inteligencia de datos</h3>
+                <p>Análisis para decisiones estratégicas. Visibilidad en tiempo real de lo que importa.</p>
+            </div>
+            <div class="service-card">
+                <h3>Gestión de comunicaciones</h3>
+                <p>Automatización de emails y correspondencia. Respuestas inteligentes y gestión eficiente.</p>
+            </div>
+            <div class="service-card">
+                <h3>Generación documental</h3>
+                <p>Informes, contratos y facturas generados automáticamente. Sin errores, sin esperas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process" id="proceso">
+        <div class="process-header">
+            <h2>Cómo trabajamos</h2>
+            <p>Un proceso diseñado para resultados rápidos</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-icon">1</div>
+                <h3>Auditoría</h3>
+                <p>Analizamos tus operaciones y detectamos oportunidades de mejora.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">2</div>
+                <h3>Implementación</h3>
+                <p>Construimos la solución a medida. Resultados en semanas, no meses.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">3</div>
+                <h3>Soporte</h3>
+                <p>Te acompañamos después con garantía de satisfacción.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy">
+        <div class="philosophy-content">
+            <h2>Cada euro invertido<br><span>vuelve multiplicado.</span></h2>
+            <p>Tecnología con impacto real. Resultados medibles. Si no hay ROI, no hay proyecto.</p>
+        </div>
+    </section>
+
+    <section class="contact" id="contacto">
+        <div class="contact-container">
+            <div class="contact-glow contact-glow-1"></div>
+            <div class="contact-glow contact-glow-2"></div>
+            <div class="contact-glow contact-glow-3"></div>
+            <div class="contact-glow contact-glow-4"></div>
+            <div class="contact-glow contact-glow-5"></div>
+            <div class="contact-glow contact-glow-6"></div>
+            <div class="contact-glow contact-glow-7"></div>
+            <div class="contact-content">
+                <h2>Hablemos.</h2>
+                <div class="contact-links">
+                    <a href="mailto:aneeugarte@gmail.com" class="contact-link">aneeugarte@gmail.com</a>
+                    <a href="tel:+34688815139" class="contact-link">+34 688 815 139</a>
+                </div>
+                <p class="contact-location">País Vasco</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 ESNA</p>
+    </footer>
+
+</body>
+</html>
